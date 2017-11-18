@@ -1,5 +1,7 @@
 # Docker образ PHP-FPM
 
+[ ![Download](https://api.bintray.com/packages/javister/docker/javister%3Ajavister-docker-php/images/download.svg) ](https://bintray.com/javister/docker/javister%3Ajavister-docker-php/_latestVersion)
+
 ## Введение
 
 В большинстве случаев руководства по установке PHP рекомендуют устанавливать 
