@@ -17,7 +17,7 @@ ENV HOME="/app" \
     FPM_PM_MAX_REQUESTS="0"
 
 
-RUN . /usr/local/sbin/yum-proxy && \
+RUN . /usr/local/bin/yum-proxy && \
     yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum-install && \
     sed -i "s/apache/system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
