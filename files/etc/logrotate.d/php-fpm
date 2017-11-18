@@ -1,0 +1,15 @@
+/config/php-fpm/log/*log {
+    rotate 14
+    daily
+    missingok
+    notifempty
+    size 100M
+    compress
+    missingok
+    notifempty
+    sharedscripts
+    delaycompress
+    postrotate
+        /bin/kill -SIGUSR1 `cat /var/opt/remi/php72/run/php-fpm/php-fpm.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}
