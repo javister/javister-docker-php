@@ -1,6 +1,7 @@
 # Docker образ PHP-FPM
 
 [ ![Download](https://api.bintray.com/packages/javister/docker/javister%3Ajavister-docker-php/images/download.svg) ](https://bintray.com/javister/docker/javister%3Ajavister-docker-php/_latestVersion)
+[![Build Status](https://travis-ci.org/javister/javister-docker-php.svg?branch=master)](https://travis-ci.org/javister/javister-docker-php)
 
 ## Введение
 
