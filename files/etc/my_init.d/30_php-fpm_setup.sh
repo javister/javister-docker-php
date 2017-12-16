@@ -11,3 +11,4 @@ sed -i "s/^pm.max_spare_servers = .*/pm.max_spare_servers = ${FPM_PM_MAX_SPARE_S
 sed -i "s/^;pm.process_idle_timeout = .*/pm.process_idle_timeout = ${FPM_PM_PROCESS_IDLE_TIMEOUT}/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf
 sed -i "s/^;pm.max_requests = .*/pm.max_requests = ${FPM_PM_MAX_REQUESTS}/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf
 sed -i "s/^;security.limit_extensions = .*/security.limit_extensions = /g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf
+sed -i "s/^default_mimetype = .*/default_mimetype = /g" /etc/opt/remi/php${PHP_VERSION}/php.ini
