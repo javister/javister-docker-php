@@ -21,6 +21,8 @@ RUN . /usr/local/bin/yum-proxy && \
     yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum-install && \
     sed -i "s/apache/system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
+    sed -i "s/;listen.owner = .*/listen.owner = system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
+    sed -i "s/;listen.group = .*/listen.group = system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
     sed -ri "s/^(listen.allowed_clients = .*)/;\1/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
     sed -i "s/^error_log = .*/error_log = \\/config\\/php-fpm\\/log\\/error.log/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.conf && \
     sed -ri "s/^;(pid = .*)/\1/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.conf && \
