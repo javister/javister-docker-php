@@ -1,4 +1,4 @@
-FROM javister-docker-docker.bintray.io/javister/javister-docker-base:1.0
+FROM javister-docker-docker.bintray.io/javister/javister-docker-nginx-base:2
 MAINTAINER Viktor Verbitsky <vektory79@gmail.com>
 
 ARG PHP_VERSION="72"
@@ -23,7 +23,6 @@ RUN . /usr/local/bin/yum-proxy && \
     sed -i "s/apache/system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
     sed -i "s/;listen.owner = .*/listen.owner = system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
     sed -i "s/;listen.group = .*/listen.group = system/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
-    sed -ri "s/^(listen.allowed_clients = .*)/;\1/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
     sed -i "s/^error_log = .*/error_log = \\/config\\/php-fpm\\/log\\/error.log/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.conf && \
     sed -ri "s/^;(pid = .*)/\1/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.conf && \
     sed -i "s/^;chdir = .*/chdir = \\/app/g" /etc/opt/remi/php${PHP_VERSION}/php-fpm.d/www.conf && \
@@ -35,7 +34,5 @@ RUN . /usr/local/bin/yum-proxy && \
     yum-clean && \
     chmod --recursive --changes +x /etc/my_init.d/*.sh /etc/service /usr/local/bin
 
-HEALTHCHECK --interval=15s --timeout=3s --start-period=30s \
-    CMD ([ "$(SCRIPT_NAME=/ping SCRIPT_FILENAME=/ping REQUEST_METHOD=GET cgi-fcgi -bind -connect ${HOSTNAME}:9000 | grep -o "pong")" == "pong" ] && exit 0) || exit 1
-
-EXPOSE 9000
+#HEALTHCHECK --interval=15s --timeout=3s --start-period=30s \
+#    CMD ([ "$(SCRIPT_NAME=/ping SCRIPT_FILENAME=/ping REQUEST_METHOD=GET cgi-fcgi -bind -connect ${HOSTNAME}:9000 | grep -o "pong")" == "pong" ] && exit 0) || exit 1

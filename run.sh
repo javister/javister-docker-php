@@ -25,4 +25,4 @@ sync
 
 GID="$(id -g)"
 
-docker run -it --name php-fpm --env PUID=$UID --env PGID=${GID} -p 9000:9000 --rm ${PROXY_ARGS} -v ${WORK_DIR}:/config:rw javister-docker-docker.bintray.io/javister/javister-docker-php:72 $@
+docker run -it --name php-fpm --env PUID=$UID --env PGID=${GID} -p 80:80 --rm ${PROXY_ARGS} -v ${WORK_DIR}:/config:rw javister-docker-docker.bintray.io/javister/javister-docker-php:72 $@
