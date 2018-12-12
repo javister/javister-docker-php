@@ -54,13 +54,13 @@ EOF
         ${doPull} \
         ${useCache} \
         --tag ${IMAGE_TAG}:latest \
-        --tag ${IMAGE_TAG}:${VERSION} \
+        --tag ${IMAGE_TAG}:${VERSION}-${SUBVERSION} \
         ${PROXY_ARGS} \
         $@ \
         .
 
     [ "${release}" == "release" ] && docker push ${IMAGE_TAG}:latest || true
-    [ "${release}" == "release" ] && docker push ${IMAGE_TAG}:${VERSION} || true
+    [ "${release}" == "release" ] && docker push ${IMAGE_TAG}:${VERSION}-${SUBVERSION} || true
 
     if [ "${downstream}" == "yes" ]; then
         while read -u 10 repo; do
